@@ -1,0 +1,80 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Guessing Game</title>
+    <style>
+        #imageContainer {
+            width: 200px;
+            height: 200px;
+            margin-top: 20px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+            let attempts = 0;
+            let wrong = 0;
+            let showing = 1;
+    
+            function processColor() {
+                const secretColor = document.getElementById('secretColor').value;
+                const guess = document.getElementById('guess').value;
+    
+                if (secretColor.toLowerCase() !== guess.toLowerCase()) {
+                    wrong++;
+                    alert("That was not it");
+                } else {
+                    alert("You got it");
+                }
+                attempts++;
+                document.getElementById('result').innerHTML = `Attempts: ${attempts}, Wrong: ${wrong}`;
+            }
+    
+            function nextImage() {
+                const image = document.getElementById('dessertImage');
+                switch (showing) {
+                    case 1:
+                        image.src = "plant1.jpg";
+                        showing = 2;
+                        break;
+                    case 2:
+                        image.src = "plant2.jpg";
+                        showing = 3;
+                        break;
+                    case 3:
+                        image.src = "plant3.jpg";
+                        showing = 1;
+                        break;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Guess the Color with Sravya Geethika Sala</h1>
+        </header>
+    
+        <form>
+            <label for="secretColor">Guess the color:</label>
+            <input type="password" id="secretColor" value="Red"><br><br>
+    
+            <label for="guess">Enter a guess:</label>
+            <input type="text" id="guess"><br><br>
+    
+            <button type="button" onclick="processColor()">Check the color</button>
+        </form>
+    
+        <div id="result"></div>
+    
+        <div>
+            <img id="dessertImage" src="plant1.jpg" width="200" height="200" onclick="nextImage()">
+        </div>
+    </body>
+    </html>
+    
