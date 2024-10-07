@@ -7,28 +7,30 @@
 
 <label for="firstNumber">Enter a number:</label>
     <input type="number" id="firstNumber" value="2">
-    
+
     <label for="secondNumber">Enter a number:</label>
     <input type="number" id="secondNumber" value="12">
-    
+
+    <!-- Compute button -->
     <button onclick="powerSum()">Compute</button>
-    
+
+    <!-- Placeholder for the result -->
     <p id="result"></p>
 
     <script>
-        function powerSum() {
-            // Get values from inputs
+function powerSum() {
+            // Get values from input fields
             const first = parseInt(document.getElementById('firstNumber').value);
             const second = parseInt(document.getElementById('secondNumber').value);
-            
-            // Initialize sum
+
+            // Initialize sum to 0
             let sum = 0;
-            
-            // Loop to compute the sum of powers
+
+            // Loop to compute sum of powers
             for (let i = 0; i < first; i++) {
-                sum += Math.pow(second, i);
+                sum += second ** i;  // Equivalent to Math.pow(second, i)
             }
-            
+
             // Update the result in the paragraph
             document.getElementById('result').innerHTML = 
                 `Sum of ${first} powers with base ${second} is ${sum}`;
