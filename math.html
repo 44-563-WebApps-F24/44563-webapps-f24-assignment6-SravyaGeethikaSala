@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head><title>Sum of powers </title></head>
+<body>
+
+<h2>Sravya Geethika figures out</h2>
+
+<label for="firstNumber">Enter a number:</label>
+    <input type="number" id="firstNumber" value="2">
+    
+    <label for="secondNumber">Enter another number:</label>
+    <input type="number" id="secondNumber" value="12">
+    
+    <button onclick="powerSum()">Compute</button>
+    
+    <p id="result"></p>
+
+    <script>
+        function powerSum() {
+            // Get values from inputs
+            const first = parseInt(document.getElementById('firstNumber').value);
+            const second = parseInt(document.getElementById('secondNumber').value);
+            
+            // Initialize sum
+            let sum = 0;
+            
+            // Loop to compute the sum of powers
+            for (let i = 0; i < first; i++) {
+                sum += Math.pow(second, i);
+            }
+            
+            // Update the result in the paragraph
+            document.getElementById('result').innerHTML = 
+                `Sum of ${first} powers with base ${second} is ${sum}`;
+        }
+    </script>
+
+</body>
+</html> 
