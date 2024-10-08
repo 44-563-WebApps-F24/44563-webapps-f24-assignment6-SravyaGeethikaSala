@@ -1,48 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sravya Geethika Orders a Lunch</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Sravya Geethika orders a lunch</title>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center">Sravya Geethika Orders a Lunch</h1>
-        <form id="lunchForm" class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="drink" value="drink">
-                <label class="form-check-label" for="drink">Drink</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="side" value="side">
-                <label class="form-check-label" for="side">Side</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="in" value="in">
-                <label class="form-check-label" for="in">Eat in</label>
-            </div>
-        </form>
-        <button class="btn btn-primary" onclick="startLunch()">Start a lunch order</button>
-        <div id="lunchResult" class="mt-3"></div>
-        
-        <hr>
-        
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="propertyName">Enter property:</label>
-                <input type="text" class="form-control" id="propertyName" value="entree">
-            </div>
-            <div class="col-md-6">
-                <label for="propertyValue">Set it to:</label>
-                <input type="text" class="form-control" id="propertyValue">
-            </div>
-        </div>
-        
-        <button class="btn btn-success" onclick="updateLunch()">Update the lunch</button>
-        <div id="updatedLunchResult" class="mt-3"></div>
-    </div>
+    <h1>Sravya Geethika Orders a Lunch</h1>
+    <form id="lunchForm">
+        <label><input type="checkbox" id="drink" value="drink"> Drink</label><br>
+        <label><input type="checkbox" id="side" value="side"> Side</label><br>
+        <label><input type="checkbox" id="in" value="in"> Eat in</label><br>
+    </form>
+    <button onclick="startLunch()">Start a lunch order</button>
+    <div id="lunchResult"></div>
+    <hr>
+    <label for="propertyName">Enter property:</label>
+    <input type="text" id="propertyName" value="entree"><br><br>
+    <label for="propertyValue">Set it to:</label>
+    <input type="text" id="propertyValue" placeholder="e.g. pizza"><br><br>
+    <button onclick="updateLunch()">Update the lunch</button>
+    <div id="updatedLunchResult"></div>
 
     <script>
         let my_lunch = {};
@@ -59,7 +35,10 @@
             const propertyName = document.getElementById('propertyName').value;
             const propertyValue = document.getElementById('propertyValue').value;
 
+            // Update the lunch object
             my_lunch[propertyName] = propertyValue;
+
+            // Display the updated my_lunch object
             document.getElementById('updatedLunchResult').innerHTML = JSON.stringify(my_lunch);
         }
     </script>
