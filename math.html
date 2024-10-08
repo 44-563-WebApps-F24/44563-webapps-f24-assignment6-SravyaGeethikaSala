@@ -1,79 +1,67 @@
+
 <!DOCTYPE html>
 <html>
-<head><title> Calculations done by Sravya Geethika </title></head>
+ <head>
+    <title> Calculations done by Sravya Geethika </title>
+ </head>
 <body>
+<h2> Sravya Geethika figures out </h2>
+<form>
+    <label for="first">Enter a number:</label>
+    <input type="number" id="firstValue" value="2" />
+    <label for="second">Enter a number:</label>
+    <input type="number" id="secondValue" value="12" />
+    <button type="button" onclick="powerSum()">Compute</button>
+</form>
+<div id="result"></div>
+<script>
+    function powerSum() {
+        const first = parseInt(document.getElementById('firstValue').value);
+        const second = parseInt(document.getElementById('secondValue').value);
+        let sum = 0;
 
-<h2>Sravya Geethika figures out</h2>
-
-<!-- Input elements for numbers -->
-<label for="firstNumber">Enter a number:</label>
-<input type="number" id="firstNumber" value="2">
-
-<label for="secondNumber">Enter a number:</label>
-<input type="number" id="secondNumber" value="12">
-
-<button onclick="powerSum()">Compute</button>
-
-<p id="result"></p>
-
-    <!-- Radio buttons for calculation options -->
-    <form>
-        <input type="radio" id="max" name="operation" value="max" onclick="processRadio()">
-        <label for="max">Max</label><br>
-
-        <input type="radio" id="min" name="operation" value="min" onclick="processRadio()">
-        <label for="min">Min</label><br>
-
-        <input type="radio" id="avg" name="operation" value="avg" onclick="processRadio()">
-        <label for="avg">Average</label><br>
-
-        <input type="radio" id="geo" name="operation" value="geo" onclick="processRadio()">
-        <label for="geo">Geometric</label><br>
-    </form>
-
-    <!-- Placeholder for the calculation result -->
-    <p id="calcResult"></p>
-
-    <script>
-        function powerSum() {
-            const first = parseInt(document.getElementById('firstNumber').value);
-            const second = parseInt(document.getElementById('secondNumber').value);
-
-            let sum = 0;
-            for (let i = 0; i < first; i++) {
-                sum += second ** i;  // Equivalent to Math.pow(second, i)
-            }
-
-            document.getElementById('result').innerHTML = 
-                `Sum of ${first} powers with base ${second} is ${sum}`;
+        for (let i = 0; i < first; i++) {
+            sum += Math.pow(second, i);
         }
-
+         document.getElementById('result').innerHTML = Sum of ${first} powers with base ${second} is ${sum};
+    }
+</script>
+    <form>
+        <label><input type="radio" name="operation" value="max" onclick="processRadio()"> Max</label><br>
+        <label><input type="radio" name="operation" value="min" onclick="processRadio()"> Min</label><br>
+        <label><input type="radio" name="operation" value="avg" onclick="processRadio()"> Average</label><br>
+        <label><input type="radio" name="operation" value="geo" onclick="processRadio()"> Geometric</label><br>
+    </form>
+    <div id="radioResult"></div>
+    <script>
         function processRadio() {
-            // Get input values
-            const first = parseInt(document.getElementById('firstNumber').value);
-            const second = parseInt(document.getElementById('secondNumber').value);
+          
+            const first = parseFloat(document.getElementById('firstValue').value);
+            const second = parseFloat(document.getElementById('secondValue').value);
+            const operation = document.querySelector('input[name="operation"]:checked');
 
-            // Get the selected radio button
-            const operation = document.querySelector('input[name="operation"]:checked').value;
-
-            let result;
-
-            // Perform operation based on selected radio button
-            if (operation === 'max') {
-                result = Math.max(first, second);
-            } else if (operation === 'min') {
-                result = Math.min(first, second);
-            } else if (operation === 'avg') {
-                result = (first + second) / 2;
-            } else if (operation === 'geo') {
-                result = Math.sqrt(first * second);  // Geometric mean
+            if (operation) {
+                let result;
+                switch (operation.value) {
+                    case 'max':
+                        result = Math.max(first, second);
+                        break;
+                    case 'min':
+                        result = Math.min(first, second);
+                        break;
+                    case 'avg':
+                        result = (first + second) / 2;
+                        break;
+                    case 'geo':
+                        result = Math.sqrt(first * second); 
+                        break;
+                }
+                  document.getElementById('radioResult').innerHTML = 
+                    Computed ${operation.value} with values ${first} and ${second} with result ${result};
+            } else {
+                document.getElementById('radioResult').innerHTML = ''; 
             }
-
-            // Display the result in calcResult paragraph
-            document.getElementById('calcResult').innerHTML = 
-                `Computed ${operation} with values ${first} and ${second} with result ${result}`;
         }
     </script>
-
-</body>
-</html> 
+</script>
+</html>
