@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>lunch</title>
+    <title>Sravya Geethika orders a lunch</title>
 </head>
 <body>
-    <h1> Sravya Geethika Orders a Lunch </h1>
+    <h1>Sravya Geethika Orders a Lunch</h1>
     <form id="lunchForm">
         <label><input type="checkbox" id="drink" value="drink"> Drink</label><br>
         <label><input type="checkbox" id="side" value="side"> Side</label><br>
@@ -16,9 +16,10 @@
     <label for="propertyName">Enter property:</label>
     <input type="text" id="propertyName" value="entree"><br><br>
     <label for="propertyValue">Set it to:</label>
-    <input type="text" id="propertyValue"><br><br>
+    <input type="text" id="propertyValue" placeholder="e.g. pizza"><br><br>
     <button onclick="updateLunch()">Update the lunch</button>
     <div id="updatedLunchResult"></div>
+
     <script>
         let my_lunch = {};
 
@@ -31,11 +32,10 @@
         }
 
         function updateLunch() {
-            // Get the property name and value
             const propertyName = document.getElementById('propertyName').value;
             const propertyValue = document.getElementById('propertyValue').value;
 
-            // Set the property in my_lunch
+            // Update the lunch object
             my_lunch[propertyName] = propertyValue;
 
             // Display the updated my_lunch object
